@@ -64,8 +64,16 @@ const commonRoutes = [
                 name: 'ShoppingCar',
                 component: () => import('../views/infos/ShoppingCar.vue')
             },
-
-
+            {
+                path: 'PersonInfo',
+                name: 'PersonInfo',
+                component: () => import('../views/infos/PersonInfo.vue')
+            },
+            {
+                path: 'GoodDetail',
+                name: 'GoodDetail',
+                component: () => import('../views/infos/GoodDetail.vue')
+            },
            ]
     }]
 

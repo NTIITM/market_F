@@ -56,6 +56,16 @@ const  PersonInteractModule = {
                 type: 'ios-paper',
                 name: 'ShoppingCar'
             },
+            {
+                text: '个人信息',
+                type: 'ios-paper',
+                name: 'PersonInfo'
+            },
+            {
+                text: '商品信息',
+                type: 'ios-paper',
+                name: 'GoodDetail'
+            },
 
 
         ],
