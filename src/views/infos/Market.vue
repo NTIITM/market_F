@@ -35,7 +35,7 @@ export default {
         url:"/getGoods",
         method:"get",
         params:{
-          uid:'',
+          uid:localStorage.getItem("userId"),
           key:this.queryName
         }
       }).then(res=>{
