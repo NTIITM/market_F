@@ -30,6 +30,11 @@ const commonRoutes = [
                 component: () => import('../views/infos/GoodsManage.vue')
             },
             {
+                path: 'GoodsUpload',
+                name: 'GoodsUpload',
+                component: () => import('../views/infos/GoodsUpload.vue')
+            },
+            {
                 path: 'ManageGoods',
                 name: 'ManageGoods',
                 component: () => import('../views/infos/ManageGoods.vue')

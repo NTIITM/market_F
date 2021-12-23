@@ -32,6 +32,11 @@ const  PersonInteractModule = {
                 name: 'ManageGoods'
             },
             {
+                text: '商品上传',
+                type: 'ios-paper',
+                name: 'GoodsUpload'
+            },
+            {
                 text: '商品详情',
                 type: 'ios-paper',
                 name: 'GoodInfo'

@@ -2,7 +2,7 @@
   <el-row>
     <el-col :span="4" v-for="(item, index) in tableData" :key="item.sid" :offset="index > 0 ? 2 : 0">
       <el-card :body-style="{ padding: '0px' }">
-        <img :src="`https://locahost8080${item.pic_url}`" class="image">
+        <img :src="`http://localhost:8083${item.pic_url}`" class="image">
         <div style="padding: 14px;">
           <span>{{item.name}}</span>
           <div class="bottom clearfix">
