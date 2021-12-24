@@ -61,6 +61,11 @@ const  PersonInteractModule = {
                 type: 'ios-paper',
                 name: 'ShoppingCar'
             },
+            {
+                text: '登录日志',
+                type: 'ios-paper',
+                name: 'Logmanager'
+            },
 
 
         ],

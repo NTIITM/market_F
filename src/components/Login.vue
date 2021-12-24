@@ -10,7 +10,7 @@
                 <Input type="password" v-model="pwd" prefix="md-lock" placeholder="密码" clearable @on-blur="verifyPwd"/>
                 <p class="error">{{pwdError}}</p>
             </div>
-            <Button :loading="isShowLoading" class="submit" type="primary" @click="submit">登录</Button>
+            <Button :loading="isShowLoading" class="submit" type="primary" @click="submit">登陆</Button>
           <p class="account"><span @click="register">注册账号</span> | <span @click="forgetPwd">忘记密码</span></p>
         </div>
 
@@ -102,17 +102,21 @@ export default {
                 // console.log(response.data.data.errCode==="0")
                 if (response.data.errCode === "0"){
                   this.isShowLoading = true
-                  // 登录成功 设置用户信息
+                  // 登陆成功 设置用户信息
                   localStorage.setItem('userName', response.data.data.userName)
                   localStorage.setItem('userType', response.data.data.userType)
                   localStorage.setItem('userImg', response.data.data.userImg)
                   localStorage.setItem('userId', response.data.data.userId)
-                  // 登录成功 假设这里是后台返回的 token
+                  // 登陆成功 假设这里是后台返回的 token
                   localStorage.setItem('token', response.data.data.token)
 
                   // this.$router.push({path: this.redirect || '/'})
                   this.$router.push({path: '/index'})
-                }else {
+                }else if(response.data.errCode === "103"){
+                  this.accountError=response.data.errMsg
+                  alert('该账号由于:'+response.data.data.refuseReason+',已封禁')
+                }
+                else {
                   this.accountError=response.data.errMsg
                 }
               }) .catch(error=> {

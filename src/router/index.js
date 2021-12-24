@@ -69,6 +69,11 @@ const commonRoutes = [
                 name: 'ShoppingCar',
                 component: () => import('../views/infos/ShoppingCar.vue')
             },
+            {
+                path: 'Logmanager',
+                name: 'Logmanager',
+                component: () => import('../views/infos/Logmanager.vue')
+            },
 
 
            ]

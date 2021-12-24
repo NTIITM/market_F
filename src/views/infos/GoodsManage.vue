@@ -165,7 +165,7 @@ export default {
         url:"/getManageGoods",
         method:"get",
         params:{
-          userId:'',
+          userId:localStorage.getItem("userId"),
           pageIndex:this.pageIndex,
           pageSize:10,
           key:this.queryName,
