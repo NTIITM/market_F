@@ -76,7 +76,7 @@ export default {
       url:"/getGoodsList",
       method:"get",
       params:{
-        uid:"2000"
+        uid:localStorage.getItem("userId")
       }
     }).then(res=>{
       if (res.data.errCode==0){

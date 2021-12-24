@@ -235,12 +235,12 @@ export default {
     // 菜单栏
     menuItems() {
       //
-      // if (localStorage.getItem("userType")==="teacher"){
-      //   // console.log("teacher","i am herr")
-      //   return this.$store.state.TeacherInteractModule.menuItems;
-      // }else {
-        // console.log("student","i am herr")
+      if (localStorage.getItem("userType")==1){
+        // console.log("teacher","i am herr")
         return this.$store.state.PersonInteractModule.menuItems;
+      }else {
+        return this.$store.state.MangerInteractModule.menuItems;
+      }
       // }
     },
     // 需要缓存的路由

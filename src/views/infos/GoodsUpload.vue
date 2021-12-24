@@ -14,7 +14,6 @@
            :auto-upload="false"
            :multiple='true'>
   <i class="el-icon-plus"></i>
-  <div slot="tip" class="el-upload__tip">只能上传jpg/png文件</div>
 </el-upload>
 </div></el-col>
 <!--展示选中图片的区域-->
@@ -138,7 +137,7 @@ export default {
       console.log('5555',this.fileList[0])
       let formData = new FormData();
       formData.append('name', this.form.name);
-      formData.append('uid', '2000');
+      formData.append('uid', localStorage.getItem("userId"));
       formData.append('amount', this.form.amount);
       formData.append('price', this.form.price);
       formData.append('description', this.form.description);

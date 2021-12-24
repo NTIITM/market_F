@@ -32,7 +32,7 @@ const commonRoutes = [
             {
                 path: 'GoodsUpload',
                 name: 'GoodsUpload',
-                component: () => import('../views/infos/GoodsUpload.vue')
+                component: () => import('../views/infos/GoodInfo.vue')
             },
             {
                 path: 'ManageGoods',
@@ -70,12 +70,22 @@ const commonRoutes = [
                 component: () => import('../views/infos/ShoppingCar.vue')
             },
             {
+
                 path: 'Logmanager',
                 name: 'Logmanager',
                 component: () => import('../views/infos/Logmanager.vue')
             },
 
-
+            {
+                path: 'PersonInfo',
+                name: 'PersonInfo',
+                component: () => import('../views/infos/PersonInfo.vue')
+            },
+            {
+                path: 'GoodDetail',
+                name: 'GoodDetail',
+                component: () => import('../views/infos/GoodDetail.vue')
+            },
            ]
     }]
 

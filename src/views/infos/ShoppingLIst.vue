@@ -24,8 +24,8 @@
           width="180">
       </el-table-column>
       <el-table-column
-          prop="sgid"
-          label="记录ID"
+          prop="name"
+          label="商品名"
           width="180">
       </el-table-column>
       <el-table-column
@@ -94,7 +94,7 @@ export default {
         url:"getBuyedGoods",
         method:"get",
         params:{
-          uid:'',
+          uid:localStorage.getItem("userId"),
           pageIndex:this.pageIndex,
           pageSize:10,
           queryName:this.queryName

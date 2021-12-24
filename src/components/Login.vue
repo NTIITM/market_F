@@ -114,7 +114,7 @@ export default {
                   this.$router.push({path: '/index'})
                 }else if(response.data.errCode === "103"){
                   this.accountError=response.data.errMsg
-                  alert('该账号由于:'+response.data.data.refuseReason+',已封禁')
+                  alert('该账号由于:'+response.data.data.refuseReason+',已封禁至'+response.data.data.refuseLoginTime)
                 }
                 else {
                   this.accountError=response.data.errMsg

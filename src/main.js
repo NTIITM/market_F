@@ -29,28 +29,27 @@ axios.defaults.baseURL = 'http://localhost:8080';
 axios.interceptors.request.use(function (config) {
 
         //存在token
-        // if (window.localStorage.getItem('token')) {
-        //     config.headers.token=window.localStorage.getItem('token')
-        //     // config.params['token'] = window.localStorage.getItem('token')
-        //
-        // }
-        // else
-            config.headers.token="6666"
+        if (window.localStorage.getItem('token')) {
+            config.headers.token=window.localStorage.getItem('token')
+            // config.params['token'] = window.localStorage.getItem('token')
+
+        }
+        // els
         return config;
     },
     function (error) {
         return Promise.reject(error)
     })
 
-// axios.interceptors.response.use(function (response) {
-//     if (response.data.errCode==101){
-//         console.log('i am here',response)
-//         alert(response.data.errMsg)
-//         router.replace('/login');
-//     }
-//         return response;
-//     }
-// )
+axios.interceptors.response.use(function (response) {
+    if (response.data.errCode==101){
+        console.log('i am here',response)
+        alert(response.data.errMsg)
+        router.replace('/login');
+    }
+        return response;
+    }
+)
 const  vm = new Vue({
     el: '#app',
     router,

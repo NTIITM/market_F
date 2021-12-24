@@ -11,7 +11,7 @@
   "dependencies": {
     "axios": "^0.24.0",
     "echarts": "^4.5.0",
-    "element-ui": "^2.13.0",
+    "element-ui": "^2.15.6",
     "iview": "^3.3.3",
     "js-md5": "^0.7.3",
     "qs": "^6.10.1",
