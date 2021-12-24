@@ -1,6 +1,8 @@
 <template>
+<el-row>
 <div id="upload">
 <!--elementui的上传图片的upload组件-->
+<el-col :span="8"><div class="grid-content bg-purple">
 <el-upload class="upload-demo"
            ref="upload"
            list-type="picture-card"
@@ -12,13 +14,16 @@
            :auto-upload="false"
            :multiple='true'>
   <i class="el-icon-plus"></i>
+  <div slot="tip" class="el-upload__tip">只能上传jpg/png文件</div>
 </el-upload>
+</div></el-col>
 <!--展示选中图片的区域-->
 <el-dialog :visible.sync="dialogVisible">
   <img width="100%"
        :src="dialogImageUrl"
        alt="">
 </el-dialog>
+<el-col :span="12"><div class="grid-content bg-purple-light">
 <!--elementui的form组件-->
 <el-form ref="form"
          :model="form"
@@ -52,7 +57,9 @@
     <el-button>重置</el-button>
   </el-form-item>
 </el-form>
+</div></el-col>
 </div>
+</el-row>
 </template>
 <script>
 import { mapMutations } from 'vuex' // 判断token

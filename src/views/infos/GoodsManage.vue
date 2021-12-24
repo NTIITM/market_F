@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <h2>个人商品信息管理</h2>
+      <h2>录商品信息管理</h2>
 
       <el-divider></el-divider>
       <el-form :inline="true" class="demo-form-inline">
@@ -62,6 +62,7 @@
           <el-button @click="getDetail(scope.row.sid)" icon="el-icon-user" size="mini" type="success">
             详情
           </el-button>
+
           <el-button @click="deleteGood(scope.row.sid)" icon="el-icon-user" size="mini" type="danger">
             删除
           </el-button>

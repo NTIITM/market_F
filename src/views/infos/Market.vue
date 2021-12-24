@@ -75,10 +75,12 @@ export default {
         method:"get",
         params:{
           uid:localStorage.getItem("userId"),
+
           key:this.queryName,
           pageIndex:this.pageIndex,
           pageSize:10,
           queryName:this.queryName
+
         }
       }).then(res=>{
         if (res.data.errCode==0){

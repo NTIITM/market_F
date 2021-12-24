@@ -22,13 +22,13 @@
 <!--          </el-select>-->
 <!--        </el-form-item>-->
         <el-form-item prop="phone">
-          <el-input v-model="form.phone" placeholder="手机号"></el-input>
+          <el-input v-model="form.phoneNumber" placeholder="手机号"></el-input>
         </el-form-item>
 <!--        <el-form-item prop="academy">-->
 <!--          <el-input v-model="form.academy" placeholder="专业"></el-input>-->
 <!--        </el-form-item>-->
         <el-form-item prop="email">
-          <el-input v-model="form.email" placeholder="电子邮箱"></el-input>
+          <el-input v-model="form.mailAddress" placeholder="电子邮箱"></el-input>
         </el-form-item>
 <!--        <el-form-item prop="birth">-->
 <!--          <el-input v-model="form.birth" placeholder="生日"></el-input>-->
@@ -45,13 +45,15 @@
 <script>
 // import Util from '../../utils/utils';
 
+import axios from "axios";
+
 export default {
   data() {
     var reg01 = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
     var validateEmail = (rule, value, callback) => {
       if (value === '') {
         callback(new Error('请输入电子邮箱'));
-      } else if (this.form.email!=''&&!reg01.test(this.form.email)) {
+      } else if (this.form.mailAddress!=''&&!reg01.test(this.form.mailAddress)) {
         callback(new Error('请输入正确的电子邮箱'));
       } else {
         callback();
@@ -61,7 +63,7 @@ export default {
     var validatePhone = (rule, value, callback) => {
       if (value === '') {
         callback(new Error('请输入手机号'));
-      } else if (this.form.phone!=''&&!reg.test(this.form.phone)) {
+      } else if (this.form.phoneNumber!=''&&!reg.test(this.form.phoneNumber)) {
         callback(new Error('请输入正确的手机号'));
       } else {
         callback();
@@ -72,13 +74,13 @@ export default {
       bg:{},
       form: {
         uid: '',
-        realName: '',
+        name: '',
         password: '',
-        email: '',
-        phone: '',
-        card: '',
-        sex: '',
-        address: ''
+        mailAddress: '',
+        phoneNumber: '',
+        picUrl: '',
+        account: '',
+        type: '',
       },
       rules: {
         name: [
@@ -119,20 +121,35 @@ export default {
   methods: {
     onSubmit(formName) {
       const self = this;
+      let formData = new FormData();
+      formData.append('uid', this.form.uid);
+      formData.append('name', this.form.name);
+      formData.append('password', this.$md5(this.form.password));
+      formData.append('mailAddress', this.form.mailAddress);
+      formData.append('phoneNumber', this.form.phoneNumber);
+      formData.append('picUrl', '/upload/imgs/1640182244288253cd7bb-45da-4584-8b6b-d12bc66c7eb2.jpg');
+      formData.append('account', '0');
+      formData.append('type', '1');
       self.$refs[formName].validate((valid) => {
         if (valid) {
-          self.$http.post('register', self.form).then(function (response) {
-            console.log(response);
-            if (response.data.code == -1) {
-              self.errorInfo = true;
-              self.errInfo = response.data.msg;
-              self.$message.error(response.data.msg);
-            } else if (response.data.code == 0) {
-              self.$message.success(response.data.msg);
-              self.$router.push('/login');
+          axios({
+            url:"register",
+            data: formData,
+            method:"post",
+            headers: {
+              "Content-Type": 'multipart/form-data',
             }
-          }).then(function (error) {
-            console.log(error);
+          }).then(res=>{
+            if (res.data.errCode==0){
+              alert("上传成功")
+              this.$router.replace('/login')
+            }else if(res.data.errCode==209){
+              alert("该手机号已注册,无法再次注册")
+            } else {
+              alert("上传失败")
+            }
+          }).catch(err=>{
+            console.log(err)
           })
         } else {
           console.log('error submit!!');
