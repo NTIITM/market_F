@@ -1,16 +1,16 @@
 <template>
   <div class="login-wrap" :style="bg">
-    <div class="ms-title">山东大学选课系统-欢迎注册</div>
+    <div class="ms-title">畅购二手商城-欢迎注册</div>
     <div class="ms-login">
       <el-form ref="form" :model="form" :rules="rules">
         <div v-if="errorInfo" style="margin-bottom: 5px;">
           <span>{{errInfo}}</span>
         </div>
         <el-form-item prop="userId">
-          <el-input v-model="form.name" placeholder="用户ID"></el-input>
+          <el-input v-model="form.uid" placeholder="用户ID"></el-input>
         </el-form-item>
         <el-form-item prop="userName">
-          <el-input v-model="form.realName" placeholder="用户姓名"></el-input>
+          <el-input v-model="form.name" placeholder="用户姓名"></el-input>
         </el-form-item>
         <el-form-item prop="password">
           <el-input v-model="form.password" type="password" placeholder="密码"></el-input>
@@ -24,15 +24,15 @@
         <el-form-item prop="phone">
           <el-input v-model="form.phone" placeholder="手机号"></el-input>
         </el-form-item>
-        <el-form-item prop="academy">
-          <el-input v-model="form.academy" placeholder="专业"></el-input>
-        </el-form-item>
+<!--        <el-form-item prop="academy">-->
+<!--          <el-input v-model="form.academy" placeholder="专业"></el-input>-->
+<!--        </el-form-item>-->
         <el-form-item prop="email">
           <el-input v-model="form.email" placeholder="电子邮箱"></el-input>
         </el-form-item>
-        <el-form-item prop="birth">
-          <el-input v-model="form.birth" placeholder="生日"></el-input>
-        </el-form-item>
+<!--        <el-form-item prop="birth">-->
+<!--          <el-input v-model="form.birth" placeholder="生日"></el-input>-->
+<!--        </el-form-item>-->
         <el-form-item>
           <el-button type="primary" @click="onSubmit('form')">确定</el-button>
           <el-button @click="onCancle()">取消</el-button>
@@ -71,7 +71,7 @@ export default {
       errorInfo: false,
       bg:{},
       form: {
-        name: '',
+        uid: '',
         realName: '',
         password: '',
         email: '',
@@ -121,7 +121,7 @@ export default {
       const self = this;
       self.$refs[formName].validate((valid) => {
         if (valid) {
-          self.$http.post('/api/user/register', self.form).then(function (response) {
+          self.$http.post('register', self.form).then(function (response) {
             console.log(response);
             if (response.data.code == -1) {
               self.errorInfo = true;

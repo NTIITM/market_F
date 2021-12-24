@@ -58,7 +58,7 @@
       </el-table-column>
       <el-table-column align="center" label="操作" width="300px">
         <template slot-scope="scope">
-          <el-button @click="" icon="el-icon-user" size="mini" type="success">
+          <el-button @click="getDetail(scope.row.sid)" icon="el-icon-user" size="mini" type="success">
             详情
           </el-button>
           <el-button @click="editGood(scope.row.sid,1)" icon="el-icon-user" v-if="radio!=1" size="mini" type="success">
@@ -124,6 +124,9 @@ export default {
     addGood(){
 
 
+    },
+    getDetail(sid){
+      this.$router.push({path:"/index/GoodDetail",query:{sid}})
     },
     deleteGood(sid){
       if (confirm("重新发布需要再次验证，确定删除吗？")){

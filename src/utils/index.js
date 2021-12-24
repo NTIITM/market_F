@@ -21,7 +21,7 @@ export function menusToRoutes(data) {
         component: () => import('../components/Error.vue')
     })
 
-    // 最后添加404页面 否则会在登陆成功后跳到404页面
+    // 最后添加404页面 否则会在登录成功后跳到404页面
     result.push(
         {path: '*', redirect: '/error'},
     )
@@ -43,7 +43,7 @@ function generateRoutes(children, item) {
 }
 
 export function resetTokenAndClearUser() {
-    // 退出登陆 清除用户资料
+    // 退出登录 清除用户资料
     localStorage.setItem('userType', '')
     localStorage.setItem('token', '')
     localStorage.setItem('userImg', '')

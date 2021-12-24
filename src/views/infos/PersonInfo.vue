@@ -32,7 +32,7 @@ export default {
         url:"/getperson",
         method:"get",
         params:{
-          uid:'',
+          uid:localStorage.getItem("userId"),
         }
       }).then(res=>{
         if (res.data.errCode==0){

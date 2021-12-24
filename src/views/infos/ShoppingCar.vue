@@ -111,15 +111,13 @@ export default {
         url:"buyGood",
         method:"get",
         params:{
-          uid:'',
+          uid:localStorage.getItem("userId"),
           sid:sids.join(','),
 
         }
       }).then(res=>{
-        if (res.data.errCode==0){
-          alert("购买成功")
+          alert(res.data.errMsg)
           this.$router.go(0)
-        }
       })
 
     },
@@ -129,7 +127,7 @@ export default {
         url:"updateCarList",
         method:"get",
         params:{
-          uid:'',
+          uid:localStorage.getItem("userId"),
           sid:row.sid,
           type:type
         }
@@ -149,6 +147,9 @@ export default {
             }
             case 3:{
               row.amount--
+              if (row.amount==0){
+                this.$router.go(0)
+              }
               break
             }
           }
@@ -164,7 +165,7 @@ export default {
         url:"/getShoppingCarList",
         method:"get",
         params:{
-         uid:'',
+         uid:localStorage.getItem("userId"),
           key:this.queryName
         }
       }).then(res=>{

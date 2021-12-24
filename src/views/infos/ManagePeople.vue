@@ -96,9 +96,6 @@
           <el-button @click="editPeopleState(scope.row.uid,0)" icon="el-icon-user" size="mini" type="primary" v-if="scope.row.stateCode==0">
             解封
           </el-button>
-          <el-button @click="editGood(scope.row.id)" icon="el-icon-user" size="mini" type="success">
-            个人商品
-          </el-button>
         </template>
       </el-table-column>
 

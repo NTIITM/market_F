@@ -10,7 +10,7 @@ Vue.prototype.$md5 = md5;
 Vue.use(Vuex)
 //尝试使用vuex进行表单数据管理
 
-const  PersonInteractModule = {
+const PersonInteractModule = {
     namespaced: true,
     state: {
         // 左侧菜单栏数据
@@ -25,21 +25,6 @@ const  PersonInteractModule = {
                 text: '商城',
                 type: 'ios-paper',
                 name:'Market',
-            },
-            {
-                text: '商品管理',
-                type: 'ios-paper',
-                name: 'ManageGoods'
-            },
-            {
-                text: '商品详情',
-                type: 'ios-paper',
-                name: 'GoodInfo'
-            },
-            {
-                text: '用户管理',
-                type: 'ios-paper',
-                name: 'ManagePeople'
             },
             {
                 text: '历史购买',
@@ -61,10 +46,40 @@ const  PersonInteractModule = {
                 type: 'ios-paper',
                 name: 'PersonInfo'
             },
+        ],
+    },
+    mutations: {
+        setMenus(state, items) {
+            state.menuItems = [...items]
+        },
+    }
+
+}
+const  MangerInteractModule = {
+    namespaced: true,
+    state: {
+        // 左侧菜单栏数据
+        menuItems: [
             {
-                text: '商品信息',
+                text: '商品管理',
                 type: 'ios-paper',
-                name: 'GoodDetail'
+                name: 'ManageGoods'
+            },
+            {
+                text: '用户管理',
+                type: 'ios-paper',
+                name: 'ManagePeople'
+            },
+            {
+                text: '个人信息',
+                type: 'ios-paper',
+                name: 'PersonInfo'
+            },
+
+            {
+                text: '日志',
+                type: 'ios-paper',
+                name: ''
             },
 
 
@@ -81,6 +96,7 @@ const store = new Vuex.Store(
 
     modules:{
         PersonInteractModule:PersonInteractModule,
+        MangerInteractModule:MangerInteractModule,
     }
 })
 

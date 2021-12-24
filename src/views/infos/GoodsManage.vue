@@ -59,11 +59,8 @@
       </el-table-column>
       <el-table-column align="center" label="操作" width="300px">
         <template slot-scope="scope">
-          <el-button @click="editGood(scope.row.id)" icon="el-icon-user" size="mini" type="success">
+          <el-button @click="getDetail(scope.row.sid)" icon="el-icon-user" size="mini" type="success">
             详情
-          </el-button>
-          <el-button @click="editGood(scope.row.id)" icon="el-icon-user" size="mini" type="success">
-            修改
           </el-button>
           <el-button @click="deleteGood(scope.row.sid)" icon="el-icon-user" size="mini" type="danger">
             删除
@@ -110,9 +107,12 @@ export default {
       return index+(this.pageIndex-1)*10+1
     },
     addGood(){
-
+      this.$router.push({path:"/index/GoodsUpload"})
 
     },
+    getDetail(sid){
+      this.$router.push({path:"/index/GoodDetail",query:{sid}})
+},
     deleteGood(sid){
       if (confirm("重新发布需要再次验证，确定删除吗？")){
         axios({
