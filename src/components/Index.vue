@@ -194,6 +194,7 @@ export default {
     // 设置用户信息
     this.userName = localStorage.getItem("userName");
     this.userImg = localStorage.getItem("userImg");
+    console.log(this.userImg)
 
     this.main = document.querySelector(".sec-right");
     this.asideArrowIcons = document.querySelectorAll(
